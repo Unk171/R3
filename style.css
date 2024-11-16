@@ -40,6 +40,7 @@ header {
   margin: 0 auto;
   max-width: 800px;
   padding: 30px 40px;
+  text-align: center;
 }
 
 .card-header::after {
@@ -95,6 +96,11 @@ button[disabled] {
 
 .float-right {
   float: right;
+}
+
+#number {
+  width: 70%;
+  margin-bottom: 3%;
 }
 
 #password {

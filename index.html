@@ -13,8 +13,19 @@
         <h1>Password Generator</h1>
       </header>
       <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
+        <div>
+          <p>Characters</p>
+          <input type="number" id="number" placeholder="Number of Characters between 8 and 128" min="8">
+        </div>
+        <div class="characters">
+          <input type="checkbox" id="special">
+          <label for="special">Special characters</label>
+          <input type="checkbox" id="upperCase">
+          <label for="upperCase">Uppercase letters</label>
+          <input type="checkbox" id="lowerCase">
+          <label for="lowerCase">Lowercase letters</label>
+          <input type="checkbox" id="numbers">
+          <label for="numbers">Numbers</label>
         </div>
         <div class="card-body">
           <textarea
