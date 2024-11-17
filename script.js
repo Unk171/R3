@@ -1,9 +1,10 @@
 let generateBtn = document.querySelector("#generate");
-const allCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
-const upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
-const numbers = "0123456789";
-const special = "!@#$%^&*()_+[]{}|;:,.<>?";
+const allCharacters = {
+  upperCaseLetters: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  lowerCaseLetters: "abcdefghijklmnopqrstuvwxyz",
+  numbers: "0123456789",
+  special: "!@#$%^&*()_+[]{}|;:,.<>?"
+};
 
 function writePassword() {
   const passwordLenght = document.getElementById("number").value;
@@ -12,23 +13,15 @@ function writePassword() {
     alert("Password lenght should be between 8 and 128");
     return;
   }
-  const specialCheck = document.getElementById("special");
-  const upperCaseCheck = document.getElementById("upperCase");
-  const lowerCaseCheck = document.getElementById("lowerCase");
-  const numbersCheck = document.getElementById("numbers");
+  const specialCheck = document.getElementById("special").checked;
+  const upperCaseCheck = document.getElementById("upperCase").checked;
+  const lowerCaseCheck = document.getElementById("lowerCase").checked;
+  const numbersCheck = document.getElementById("numbers").checked;
   let characters = "";
-  if (specialCheck.checked) {
-    characters += special;
-  };
-  if (upperCaseCheck.checked) {
-    characters += upperCaseLetters
-  };
-  if (lowerCaseCheck.checked) {
-    characters += lowerCaseLetters
-  };
-  if (numbersCheck.checked) {
-    characters += numbers
-  };
+  if (specialCheck) characters += allCharacters.special;
+  if (upperCaseCheck) characters += allCharacters.upperCaseLetters;
+  if (lowerCaseCheck) characters += allCharacters.lowerCaseLetters;
+  if (numbersCheck) characters += allCharacters.numbers;
   if (!characters) {
     alert("You should check one of characters type");
     return;
@@ -42,9 +35,8 @@ function writePassword() {
     }
     return password;
   };
-  let password = generatePassword(length)
-  let passwordText = document.querySelector("#password");
-  passwordText.value = password;
+  const password = generatePassword(length)
+  document.querySelector("#password").value = password;
 }
 
 generateBtn.addEventListener("click", writePassword);
